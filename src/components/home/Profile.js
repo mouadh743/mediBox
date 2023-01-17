@@ -24,9 +24,10 @@ const Styles = StyleSheet.create({
     paddingHorizontal: scale(17),
     paddingBottom: scale(19),
     paddingTop: scale(28),
-    borderTopLeftRadius: scale(15),
-    borderTopRightRadius: scale(15),
-    height:scale(710)
+    borderTopLeftRadius: scale(30),
+    borderTopRightRadius: scale(30),
+    height:scale(710),
+    marginTop:15
   },
   SubWrapper: {
     backgroundColor: colors.PaleBlue,
@@ -40,14 +41,14 @@ const Profile = () => {
     <View style={[Styles.GlobalContainer]}>
       <View style={{height:scale(55),flexDirection:'row',alignItems:'center',justifyContent:'flex-start',paddingHorizontal:scale(18)}} >
         <Return style={{marginRight:scale(22)}} />
-        <ProgressBar width={265} progress={0.5} color={colors.DarkBlue} height={8} borderColor={'white'} style={{backgroundColor:'white',borderRadius:10}}  />
+        <ProgressBar width={scale(280)} progress={0.5} color={colors.DarkBlue} height={8} borderColor={'white'} style={{backgroundColor:'white',borderRadius:10}}  />
       </View>
       <View style={[Styles.Wrapper]}>
-        <View>
+        {/* <View>
           <TitleWrapper>Create your profile 1/3</TitleWrapper>
           <Description>Personal information</Description>
-        </View>
-        <View style={[Styles.SubWrapper]}>
+        </View> */}
+        {/* <View style={[Styles.SubWrapper]}>
           <View>
             <View>
               <Text>Username</Text>
@@ -56,7 +57,7 @@ const Profile = () => {
               <TextInput placeholder="password" />
             </View>
           </View>
-        </View>
+        </View> */}
       </View>
     </View>
   );

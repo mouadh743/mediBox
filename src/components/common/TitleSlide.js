@@ -1,4 +1,5 @@
 import {StyleSheet, Text} from 'react-native';
+import { scale } from '../../helpers/functions';
 import { colors } from '../../themes';
 
 const Styles = StyleSheet.create({
@@ -6,8 +7,8 @@ const Styles = StyleSheet.create({
     fontFamily: 'Gilroy-Bold',
     fontStyle: 'normal',
     fontWeight: '700',
-    fontSize: 24,
-    lineHeight: 32,
+    fontSize: scale(24),
+    lineHeight: scale(32),
     color:colors.Dark
   },
 });

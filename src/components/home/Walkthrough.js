@@ -1,11 +1,19 @@
 import React, {useRef, useState} from 'react';
-import {Image, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {
+  Dimensions,
+  Image,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import {scale} from '../../helpers/functions';
 import {colors, images} from '../../themes';
 import Buttons from '../common/Button';
 import Description from '../common/Description';
 import TitleSlide from '../common/TitleSlide';
+import {WidthScreen, HeightScreen} from '../../themes/metrics';
 const Styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -33,53 +41,40 @@ const Styles = StyleSheet.create({
 const slides = [
   {
     key: 1,
-    title: <TitleSlide>Checkup management</TitleSlide>,
-    text: (
-      <Description>
-        Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna
-        viverra sodales sociis congue ipsum.
-      </Description>
-    ),
+    title: 'Checkup management',
+    text: 'Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna viverra sodales sociis congue ipsum.',
     image: images.walkthrought1,
     backgroundColor: '#59b2ab',
     buttonText: 'Next',
   },
   {
     key: 2,
-    title: <TitleSlide>Share reports with doctors</TitleSlide>,
-    text: (
-      <Description>
-        Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna
-        viverra sodales sociis congue ipsum.
-      </Description>
-    ),
+    title: 'Share reports with doctors',
+    text: 'Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna viverra sodales sociis congue ipsum.',
     image: images.walkthrought2,
     backgroundColor: '#febe29',
     buttonText: 'Next',
   },
   {
     key: 3,
-    title: <TitleSlide>Data protection</TitleSlide>,
-    text: (
-      <Description>
-        Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna
-        viverra sodales sociis congue ipsum.
-      </Description>
-    ),
+    title: 'Data protection',
+    text: 'Lorem ipsum dolor sit amet consectetur. Ut nunc vitae at et. Proin urna viverra sodales sociis congue ipsum.',
     image: images.walkthrought3,
     backgroundColor: '#22bcb5',
     buttonText: "Let's",
   },
 ];
 const Walkthrough = ({navigation}) => {
+  const window = Dimensions.get('window');
+  console.log('height_width', window.height, window.width);
   const slider = useRef();
   const [showApp, setShowApp] = useState(false);
   _renderItem = ({item}) => {
     return (
       <View style={Styles.container}>
         <Image source={item.image} />
-        <Text>{item.title}</Text>
-        <Text>{item.text}</Text>
+        <TitleSlide>{item.title}</TitleSlide>
+        <Description>{item.text}</Description>
       </View>
     );
   };
@@ -87,7 +82,7 @@ const Walkthrough = ({navigation}) => {
     // User finished the introduction. Show real app through
     // navigation or simply by control ling state
     setShowApp(true);
-    navigation.navigate('Profile')
+    navigation.navigate('Profile');
   };
   _renderNextButton = () => {
     return (
@@ -96,12 +91,16 @@ const Walkthrough = ({navigation}) => {
       </View>
     );
   };
-  _renderDoneButton=()=>{
-    return(
-      <View style={[Styles.buttonContainer,{backgroundColor:colors.DarkBlue}]}>
-        <Text style={[Styles.buttonText,{color:colors.LightBlue}]}>Let's go</Text>
-      </View>)
-  }
+  _renderDoneButton = () => {
+    return (
+      <View
+        style={[Styles.buttonContainer, {backgroundColor: colors.DarkBlue}]}>
+        <Text style={[Styles.buttonText, {color: colors.LightBlue}]}>
+          Let's go
+        </Text>
+      </View>
+    );
+  };
   return (
     <View style={{flex: 1}}>
       <StatusBar backgroundColor={colors.PaleBlue} barStyle="dark-content" />
