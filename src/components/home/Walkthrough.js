@@ -65,7 +65,7 @@ const slides = [
   },
 ];
 const Walkthrough = ({navigation}) => {
-  const window = Dimensions.get('window');
+  const window = Dimensions.get('screen');
   console.log('height_width', window.height, window.width);
   const slider = useRef();
   const [showApp, setShowApp] = useState(false);

@@ -1,11 +1,21 @@
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import ProgressBar from 'react-native-progress/Bar';
+import Description from '../components/common/Description';
+import Return from '../components/common/Return';
+import TitleWrapper from '../components/common/TitleWrapper';
 import {scale} from '../helpers/functions';
 import {colors} from '../themes';
 const Styles = StyleSheet.create({
   GlobalContainer: {
     backgroundColor: colors.PaleBlue,
-    flex:1,
-    width:'100%'
+    flex: 1,
+    width: '100%',
+  },
+  Header: {
+    height: scale(55),
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: scale(18),
   },
   Wrapper: {
     backgroundColor: '#FFFFFF',
@@ -14,25 +24,49 @@ const Styles = StyleSheet.create({
     paddingTop: scale(28),
     borderTopLeftRadius: scale(15),
     borderTopRightRadius: scale(15),
+    height: scale(710),
+    marginTop: 15,
   },
   SubWrapper: {
     backgroundColor: colors.PaleBlue,
     padding: scale(8),
     borderRadius: scale(15),
     marginTop: scale(23),
-    height:'90%'
+    height: '90%',
+  },
+  ProgressStyle: {
+    backgroundColor: 'white',
+    borderRadius: 10,
   },
 });
-const ModalContainer = ({Header, Title, Content}) => {
+export default function ModalContainer({children, ...restProps}) {
+  return <View style={[Styles.GlobalContainer]}>{children}</View>;
+}
+ModalContainer.Header = function Header({children, ...restProps}) {
   return (
-    <View style={[Styles.GlobalContainer]}>
-      <StatusBar backgroundColor="transparent" barStyle="dark-content" />
-      {Header}
-      <View style={[Styles.Wrapper]}>
-        {Title}
-        <View style={[Styles.SubWrapper]}>{Content}</View>
-      </View>
+    <View style={[Styles.Header, restProps.style]}>
+      <Return style={{marginRight: scale(22)}} />
+      <ProgressBar
+        progress={restProps.progress}
+        width={scale(280)}
+        color={colors.DarkBlue}
+        height={8}
+        borderColor={'white'}
+        style={Styles.ProgressStyle}
+      />
+      {children}
     </View>
   );
 };
-export default ModalContainer;
+ModalContainer.Wrapper = function Wrapper({children, ...restProps}) {
+  return (
+    <View style={[Styles.Wrapper, restProps.style]}>
+      <TitleWrapper>{restProps.title}</TitleWrapper>
+      <Description>{restProps.description} </Description>
+      {children}
+    </View>
+  );
+};
+ModalContainer.Content = function Content({children, ...restProps}) {
+  return <View style={[Styles.SubWrapper, restProps.style]}>{children}</View>;
+};
