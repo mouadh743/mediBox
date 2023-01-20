@@ -13,9 +13,12 @@ const Styles = StyleSheet.create({
 });
 const SplashScreen = ({navigation}) => {
     const checkConnection = useCallback(() => {
-        setTimeout(() => {
+        const time = setTimeout(() => {
               navigation.navigate('Walkthrought')   
         }, 1000);
+        return ()=>{
+          clearTimeout(time)
+        }
       }, [navigation]);
     useEffect(() => {
         checkConnection()
@@ -25,8 +28,6 @@ const SplashScreen = ({navigation}) => {
     <View style={Styles.container}>
     {/* <StatusBar hidden  /> */}
       <Image source={images.logo} />
-      {/* <Text style={styles.text}>APRI TRADE</Text>
-      <Text style={styles.subText}>BY APRIUM</Text> */}
     </View>
   );
 };

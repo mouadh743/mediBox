@@ -14,8 +14,8 @@ const AppNavigator = () => {
           headerShown: false,
         }}>
 
-        <Stack.Screen name="Splash" component={Splash} />
-        <Stack.Screen name="Walkthrought" component={Walkthrough} />
+        {/* <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen name="Walkthrought" component={Walkthrough} /> */}
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
 import Description from '../components/common/Description';
 import Return from '../components/common/Return';
@@ -12,7 +12,7 @@ const Styles = StyleSheet.create({
     width: '100%',
   },
   Header: {
-    height: scale(55),
+    height: scale(40),
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: scale(18),
@@ -24,15 +24,15 @@ const Styles = StyleSheet.create({
     paddingTop: scale(28),
     borderTopLeftRadius: scale(15),
     borderTopRightRadius: scale(15),
-    height: scale(710),
-    marginTop: 15,
+    flex: 1,
+    marginTop: scale(15),
   },
   SubWrapper: {
     backgroundColor: colors.PaleBlue,
     padding: scale(8),
     borderRadius: scale(15),
     marginTop: scale(23),
-    height: '90%',
+    flex: 1,
   },
   ProgressStyle: {
     backgroundColor: 'white',

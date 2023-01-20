@@ -1,18 +1,10 @@
-import {
-  Image,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {StatusBar, Text, TextInput, View} from 'react-native';
 import ModalContainer from '../../containers/ModalContainer';
-import {scale} from '../../helpers/functions';
-import {colors} from '../../themes';
-const Styles = StyleSheet.create({});
+import { colors } from '../../themes';
 const Profile = () => {
   return (
     <ModalContainer>
+      <StatusBar backgroundColor={colors.PaleBlue} barStyle="dark-content" />
       <ModalContainer.Header
         style={{
           justifyContent: 'flex-start',
@@ -21,8 +13,11 @@ const Profile = () => {
       />
       <ModalContainer.Wrapper
         title="Create your profile 1/3"
-        description="Personal information"
-      />
+        description="Personal information">
+        <ModalContainer.Content>
+        
+        </ModalContainer.Content>
+      </ModalContainer.Wrapper>
     </ModalContainer>
     // <View style={[Styles.GlobalContainer]}>
     //   <View style={{height:scale(55),flexDirection:'row',alignItems:'center',justifyContent:'flex-start',paddingHorizontal:scale(18)}} >
